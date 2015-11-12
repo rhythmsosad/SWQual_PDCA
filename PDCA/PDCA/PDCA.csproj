@@ -127,6 +127,7 @@
     <Content Include="Content\patterns\header-profile-skin-1.png" />
     <Content Include="Content\patterns\header-profile-skin-2.png" />
     <Content Include="Content\patterns\header-profile-skin-3.png" />
+    <Content Include="Content\patterns\header-profile-skin-cu.png" />
     <Content Include="Content\patterns\header-profile.png" />
     <Content Include="Content\patterns\otis_redding.png" />
     <Content Include="Content\patterns\shattered.png" />
@@ -224,7 +225,14 @@
     <Content Include="Content\plugins\sweetalert\sweetalert.css" />
     <Content Include="Content\plugins\switchery\switchery.css" />
     <Content Include="Content\plugins\toastr\toastr.min.css" />
+    <Content Include="Content\style - Copy.css" />
+    <Content Include="Content\style - Copy.min.css">
+      <DependentUpon>style - Copy.css</DependentUpon>
+    </Content>
     <Content Include="Content\style.css" />
+    <Content Include="Content\style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\font-awesome\css\font-awesome.css" />
     <Content Include="fonts\font-awesome\css\font-awesome.min.css" />
@@ -299,9 +307,42 @@
     <Content Include="Images\p_big1.jpg" />
     <Content Include="Images\p_big2.jpg" />
     <Content Include="Images\p_big3.jpg" />
+    <Content Include="Images\sites\chula_eng.png" />
     <Content Include="Images\zender_logo.png" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="LESS\badgets_labels.less" />
+    <Content Include="LESS\base.less" />
+    <Content Include="LESS\buttons.less" />
+    <Content Include="LESS\chat.less" />
+    <Content Include="LESS\custom.less" />
+    <Content Include="LESS\elements.less" />
+    <Content Include="LESS\landing.less" />
+    <Content Include="LESS\md-skin.less" />
+    <Content Include="LESS\media.less" />
+    <Content Include="LESS\metismenu.less" />
+    <Content Include="LESS\mixins.less" />
+    <Content Include="LESS\navigation.less" />
+    <Content Include="LESS\pages.less" />
+    <Content Include="LESS\rtl.less" />
+    <Content Include="LESS\sidebar.less" />
+    <Content Include="LESS\skins.less" />
+    <Content Include="LESS\spinners.less" />
+    <Content Include="LESS\style.css">
+      <DependentUpon>style.less</DependentUpon>
+    </Content>
+    <Content Include="LESS\style.less" />
+    <Content Include="LESS\style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
+    <Content Include="LESS\theme-config.less" />
+    <Content Include="LESS\top_navigation.less" />
+    <Content Include="LESS\typography.less" />
+    <Content Include="LESS\variables.less" />
+    <None Include="compilerconfig.json" />
+    <Content Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\app\inspinia.js" />
     <Content Include="Scripts\app\inspinia.min.js" />
@@ -726,6 +767,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -781,6 +823,19 @@
     <Content Include="Scripts\plugins\chartist\chartist.min.js.map" />
     <Content Include="Scripts\plugins\diff_match_patch\COPYING" />
     <Content Include="Scripts\plugins\justified-gallery\README.md" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout_2.cshtml" />
+    <Content Include="Views\Shared\_Layout_3.cshtml" />
+    <Content Include="Views\Shared\_Layout_4.cshtml" />
+    <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Shared\_NavigationOffCanvas.cshtml" />
+    <Content Include="Views\Shared\_RightSidebar.cshtml" />
+    <Content Include="Views\Shared\_SkinConfig.cshtml" />
+    <Content Include="Views\Shared\_TopNavbar.cshtml" />
+    <Content Include="Views\Shared\_TopNavbar2.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -790,7 +845,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
