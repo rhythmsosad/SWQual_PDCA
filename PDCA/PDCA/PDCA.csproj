@@ -836,8 +836,8 @@
     <Content Include="Views\Shared\_SkinConfig.cshtml" />
     <Content Include="Views\Shared\_TopNavbar.cshtml" />
     <Content Include="Views\Shared\_TopNavbar2.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Plan\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
