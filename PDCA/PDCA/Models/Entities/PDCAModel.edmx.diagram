@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5dd2dd24a542420fa4fa6f4e0f9db088" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_SWQUALModel.auth_user" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.course" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.lut_course_faculty" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.lut_edu_degree" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.plan" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.questionaire" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.questionaire_ans" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.questionaire_ans_point" Width="1.5" PointX="9.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.questionaire_choice" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="DB_SWQUALModel.FK_plan_auth_user" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_SWQUALModel.FK_questionaire_auth_user" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_SWQUALModel.FK_course_lut_course_faculty" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_SWQUALModel.FK_course_lut_edu_degree" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_SWQUALModel.FK_questionaire_ans_course" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_SWQUALModel.FK_questionaire_plan" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_SWQUALModel.FK_questionaire_ans_questionaire" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_SWQUALModel.FK_questionaire_choice_questionaire" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_SWQUALModel.FK_questionaire_ans_point_questionaire_ans1" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_SWQUALModel.FK_questionaire_ans_point_questionaire_choice" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

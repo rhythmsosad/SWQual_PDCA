@@ -52,6 +52,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\BeginCollectionItem.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -61,6 +69,8 @@
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -348,7 +358,24 @@
     <Content Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\Entities\PDCAModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PDCAModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Entities\PDCAModel.edmx.diagram">
+      <DependentUpon>PDCAModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Models\Entities\PDCAModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PDCAModel.edmx</DependentUpon>
+      <LastGenOutput>PDCAModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Entities\PDCAModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PDCAModel.edmx</DependentUpon>
+      <LastGenOutput>PDCAModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\app\inspinia.js" />
     <Content Include="Scripts\app\inspinia.min.js" />
     <Content Include="Scripts\app\skin.config.min.js" />
@@ -774,10 +801,53 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
+    <Compile Include="Controllers\QuestionaireController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
+    <Compile Include="Models\Entities\auth_user.cs">
+      <DependentUpon>PDCAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\course.cs">
+      <DependentUpon>PDCAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\lut_course_faculty.cs">
+      <DependentUpon>PDCAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\lut_edu_degree.cs">
+      <DependentUpon>PDCAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\PDCAModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PDCAModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\PDCAModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PDCAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\PDCAModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PDCAModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\plan.cs">
+      <DependentUpon>PDCAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\questionaire.cs">
+      <DependentUpon>PDCAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\questionaire_ans.cs">
+      <DependentUpon>PDCAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\questionaire_ans_point.cs">
+      <DependentUpon>PDCAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\questionaire_choice.cs">
+      <DependentUpon>PDCAModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -843,6 +913,7 @@
     <Content Include="Views\Shared\_TopNavbar2.cshtml" />
     <Content Include="Views\Plan\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Questionaire\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -852,7 +923,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
