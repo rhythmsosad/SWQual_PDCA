@@ -4,12 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace PDCA.Controllers
+namespace PDCA.Areas.Admin.Controllers
 {
     public class QuestionaireController : Controller
     {
         // GET: Questionaire
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Form()
         {
             return View();
         }

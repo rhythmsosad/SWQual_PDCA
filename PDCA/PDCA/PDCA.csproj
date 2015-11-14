@@ -239,6 +239,7 @@
     <Content Include="Content\plugins\sweetalert\sweetalert.css" />
     <Content Include="Content\plugins\switchery\switchery.css" />
     <Content Include="Content\plugins\toastr\toastr.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\style - Copy.css" />
     <Content Include="Content\style - Copy.min.css">
       <DependentUpon>style - Copy.css</DependentUpon>
@@ -354,6 +355,23 @@
     <Content Include="LESS\top_navigation.less" />
     <Content Include="LESS\typography.less" />
     <Content Include="LESS\variables.less" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Plan\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Footer.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout_2.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout_3.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout_4.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Navigation.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_NavigationOffCanvas.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_RightSidebar.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_SkinConfig.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_TopNavbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_TopNavbar2.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Questionaire\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Questionaire\Form.cshtml" />
     <None Include="compilerconfig.json" />
     <Content Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -365,6 +383,10 @@
     <Content Include="Models\Entities\PDCAModel.edmx.diagram">
       <DependentUpon>PDCAModel.edmx</DependentUpon>
     </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Models\Entities\PDCAModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -383,6 +405,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\plugins\blueimp\jquery.blueimp-gallery.min.js" />
     <Content Include="Scripts\plugins\chartist\chartist.min.js" />
     <Content Include="Scripts\plugins\chartJs\Chart.min.js" />
@@ -799,9 +822,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PlanController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuestionaireController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PlanController.cs" />
-    <Compile Include="Controllers\QuestionaireController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -911,9 +936,7 @@
     <Content Include="Views\Shared\_SkinConfig.cshtml" />
     <Content Include="Views\Shared\_TopNavbar.cshtml" />
     <Content Include="Views\Shared\_TopNavbar2.cshtml" />
-    <Content Include="Views\Plan\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Questionaire\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -923,6 +946,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

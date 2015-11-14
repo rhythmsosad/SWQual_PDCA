@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace PDCA.Controllers
 {
-    public class PlanController : Controller
+    public class HomeController : Controller
     {
-        // GET: Plan
+        // GET: Home
         public ActionResult Index()
         {
             return View();

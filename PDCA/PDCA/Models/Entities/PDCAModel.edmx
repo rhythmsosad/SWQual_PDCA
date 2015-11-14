@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_SWQUALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_SWQUALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="auth_user">
           <Key>
             <PropertyRef Name="id" />
@@ -56,7 +56,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="owner_id" Type="int" Nullable="false" />
           <Property Name="year" Type="int" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="2000" Nullable="false" />
           <Property Name="plan_id" Type="int" />
@@ -173,18 +172,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_questionaire_auth_user">
-          <End Role="auth_user" Type="Self.auth_user" Multiplicity="1" />
-          <End Role="questionaire" Type="Self.questionaire" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="auth_user">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="questionaire">
-              <PropertyRef Name="owner_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_questionaire_choice_questionaire">
           <End Role="questionaire" Type="Self.questionaire" Multiplicity="1" />
           <End Role="questionaire_choice" Type="Self.questionaire_choice" Multiplicity="*" />
@@ -247,10 +234,6 @@
             <End Role="questionaire" EntitySet="questionaire" />
             <End Role="questionaire_ans" EntitySet="questionaire_ans" />
           </AssociationSet>
-          <AssociationSet Name="FK_questionaire_auth_user" Association="Self.FK_questionaire_auth_user">
-            <End Role="auth_user" EntitySet="auth_user" />
-            <End Role="questionaire" EntitySet="questionaire" />
-          </AssociationSet>
           <AssociationSet Name="FK_questionaire_choice_questionaire" Association="Self.FK_questionaire_choice_questionaire">
             <End Role="questionaire" EntitySet="questionaire" />
             <End Role="questionaire_choice" EntitySet="questionaire_choice" />
@@ -260,79 +243,122 @@
             <End Role="questionaire" EntitySet="questionaire" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_SWQUALModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DB_SWQUALEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="auth_user" EntityType="DB_SWQUALModel.auth_user" />
+          <EntitySet Name="course" EntityType="DB_SWQUALModel.course" />
+          <EntitySet Name="lut_course_faculty" EntityType="DB_SWQUALModel.lut_course_faculty" />
+          <EntitySet Name="lut_edu_degree" EntityType="DB_SWQUALModel.lut_edu_degree" />
+          <EntitySet Name="plan" EntityType="DB_SWQUALModel.plan" />
+          <EntitySet Name="questionaire" EntityType="DB_SWQUALModel.questionaire" />
+          <EntitySet Name="questionaire_ans" EntityType="DB_SWQUALModel.questionaire_ans" />
+          <EntitySet Name="questionaire_ans_point" EntityType="DB_SWQUALModel.questionaire_ans_point" />
+          <EntitySet Name="questionaire_choice" EntityType="DB_SWQUALModel.questionaire_choice" />
+          <AssociationSet Name="FK_plan_auth_user" Association="DB_SWQUALModel.FK_plan_auth_user">
+            <End Role="auth_user" EntitySet="auth_user" />
+            <End Role="plan" EntitySet="plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_course_lut_course_faculty" Association="DB_SWQUALModel.FK_course_lut_course_faculty">
+            <End Role="lut_course_faculty" EntitySet="lut_course_faculty" />
+            <End Role="course" EntitySet="course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_course_lut_edu_degree" Association="DB_SWQUALModel.FK_course_lut_edu_degree">
+            <End Role="lut_edu_degree" EntitySet="lut_edu_degree" />
+            <End Role="course" EntitySet="course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_questionaire_ans_course" Association="DB_SWQUALModel.FK_questionaire_ans_course">
+            <End Role="course" EntitySet="course" />
+            <End Role="questionaire_ans" EntitySet="questionaire_ans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_questionaire_plan" Association="DB_SWQUALModel.FK_questionaire_plan">
+            <End Role="plan" EntitySet="plan" />
+            <End Role="questionaire" EntitySet="questionaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_questionaire_ans_questionaire" Association="DB_SWQUALModel.FK_questionaire_ans_questionaire">
+            <End Role="questionaire" EntitySet="questionaire" />
+            <End Role="questionaire_ans" EntitySet="questionaire_ans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_questionaire_choice_questionaire" Association="DB_SWQUALModel.FK_questionaire_choice_questionaire">
+            <End Role="questionaire" EntitySet="questionaire" />
+            <End Role="questionaire_choice" EntitySet="questionaire_choice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_questionaire_ans_point_questionaire_ans1" Association="DB_SWQUALModel.FK_questionaire_ans_point_questionaire_ans1">
+            <End Role="questionaire_ans" EntitySet="questionaire_ans" />
+            <End Role="questionaire_ans_point" EntitySet="questionaire_ans_point" />
+          </AssociationSet>
+          <AssociationSet Name="FK_questionaire_ans_point_questionaire_choice" Association="DB_SWQUALModel.FK_questionaire_ans_point_questionaire_choice">
+            <End Role="questionaire_choice" EntitySet="questionaire_choice" />
+            <End Role="questionaire_ans_point" EntitySet="questionaire_ans_point" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="auth_user">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="surname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="plan" Relationship="Self.FK_plan_auth_user" FromRole="auth_user" ToRole="plan" />
-          <NavigationProperty Name="questionaire" Relationship="Self.FK_questionaire_auth_user" FromRole="auth_user" ToRole="questionaire" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="plan" Relationship="DB_SWQUALModel.FK_plan_auth_user" FromRole="auth_user" ToRole="plan" />
         </EntityType>
         <EntityType Name="course">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="degree_id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="faculty_id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="lut_course_faculty" Relationship="Self.FK_course_lut_course_faculty" FromRole="course" ToRole="lut_course_faculty" />
-          <NavigationProperty Name="lut_edu_degree" Relationship="Self.FK_course_lut_edu_degree" FromRole="course" ToRole="lut_edu_degree" />
-          <NavigationProperty Name="questionaire_ans" Relationship="Self.FK_questionaire_ans_course" FromRole="course" ToRole="questionaire_ans" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="degree_id" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="faculty_id" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="lut_course_faculty" Relationship="DB_SWQUALModel.FK_course_lut_course_faculty" FromRole="course" ToRole="lut_course_faculty" />
+          <NavigationProperty Name="lut_edu_degree" Relationship="DB_SWQUALModel.FK_course_lut_edu_degree" FromRole="course" ToRole="lut_edu_degree" />
+          <NavigationProperty Name="questionaire_ans" Relationship="DB_SWQUALModel.FK_questionaire_ans_course" FromRole="course" ToRole="questionaire_ans" />
         </EntityType>
         <EntityType Name="lut_course_faculty">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="prefix" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="course" Relationship="Self.FK_course_lut_course_faculty" FromRole="lut_course_faculty" ToRole="course" />
+          <NavigationProperty Name="course" Relationship="DB_SWQUALModel.FK_course_lut_course_faculty" FromRole="lut_course_faculty" ToRole="course" />
         </EntityType>
         <EntityType Name="lut_edu_degree">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="course_name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="course" Relationship="Self.FK_course_lut_edu_degree" FromRole="lut_edu_degree" ToRole="course" />
+          <Property Name="id" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="course_name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="course" Relationship="DB_SWQUALModel.FK_course_lut_edu_degree" FromRole="lut_edu_degree" ToRole="course" />
         </EntityType>
         <EntityType Name="plan">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="problem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="objective" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="steps" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="problem" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="objective" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="steps" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="owner_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="auth_user" Relationship="Self.FK_plan_auth_user" FromRole="plan" ToRole="auth_user" />
-          <NavigationProperty Name="questionaire" Relationship="Self.FK_questionaire_plan" FromRole="plan" ToRole="questionaire" />
+          <NavigationProperty Name="auth_user" Relationship="DB_SWQUALModel.FK_plan_auth_user" FromRole="plan" ToRole="auth_user" />
+          <NavigationProperty Name="questionaire" Relationship="DB_SWQUALModel.FK_questionaire_plan" FromRole="plan" ToRole="questionaire" />
         </EntityType>
         <EntityType Name="questionaire">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="owner_id" Type="Int32" Nullable="false" />
           <Property Name="year" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
           <Property Name="plan_id" Type="Int32" />
-          <NavigationProperty Name="auth_user" Relationship="Self.FK_questionaire_auth_user" FromRole="questionaire" ToRole="auth_user" />
-          <NavigationProperty Name="plan" Relationship="Self.FK_questionaire_plan" FromRole="questionaire" ToRole="plan" />
-          <NavigationProperty Name="questionaire_ans" Relationship="Self.FK_questionaire_ans_questionaire" FromRole="questionaire" ToRole="questionaire_ans" />
-          <NavigationProperty Name="questionaire_choice" Relationship="Self.FK_questionaire_choice_questionaire" FromRole="questionaire" ToRole="questionaire_choice" />
+          <NavigationProperty Name="plan" Relationship="DB_SWQUALModel.FK_questionaire_plan" FromRole="questionaire" ToRole="plan" />
+          <NavigationProperty Name="questionaire_ans" Relationship="DB_SWQUALModel.FK_questionaire_ans_questionaire" FromRole="questionaire" ToRole="questionaire_ans" />
+          <NavigationProperty Name="questionaire_choice" Relationship="DB_SWQUALModel.FK_questionaire_choice_questionaire" FromRole="questionaire" ToRole="questionaire_choice" />
         </EntityType>
         <EntityType Name="questionaire_ans">
           <Key>
@@ -341,10 +367,10 @@
           <Property Name="id" Type="Int64" Nullable="false" />
           <Property Name="questionaire_id" Type="Int32" Nullable="false" />
           <Property Name="course_id" Type="Int32" Nullable="false" />
-          <Property Name="evaluated_name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="course" Relationship="Self.FK_questionaire_ans_course" FromRole="questionaire_ans" ToRole="course" />
-          <NavigationProperty Name="questionaire" Relationship="Self.FK_questionaire_ans_questionaire" FromRole="questionaire_ans" ToRole="questionaire" />
-          <NavigationProperty Name="questionaire_ans_point" Relationship="Self.FK_questionaire_ans_point_questionaire_ans1" FromRole="questionaire_ans" ToRole="questionaire_ans_point" />
+          <Property Name="evaluated_name" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="course" Relationship="DB_SWQUALModel.FK_questionaire_ans_course" FromRole="questionaire_ans" ToRole="course" />
+          <NavigationProperty Name="questionaire" Relationship="DB_SWQUALModel.FK_questionaire_ans_questionaire" FromRole="questionaire_ans" ToRole="questionaire" />
+          <NavigationProperty Name="questionaire_ans_point" Relationship="DB_SWQUALModel.FK_questionaire_ans_point_questionaire_ans1" FromRole="questionaire_ans" ToRole="questionaire_ans_point" />
         </EntityType>
         <EntityType Name="questionaire_ans_point">
           <Key>
@@ -354,8 +380,8 @@
           <Property Name="answer_id" Type="Int64" Nullable="false" />
           <Property Name="choice_id" Type="Int64" Nullable="false" />
           <Property Name="answer_point" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="questionaire_ans" Relationship="Self.FK_questionaire_ans_point_questionaire_ans1" FromRole="questionaire_ans_point" ToRole="questionaire_ans" />
-          <NavigationProperty Name="questionaire_choice" Relationship="Self.FK_questionaire_ans_point_questionaire_choice" FromRole="questionaire_ans_point" ToRole="questionaire_choice" />
+          <NavigationProperty Name="questionaire_ans" Relationship="DB_SWQUALModel.FK_questionaire_ans_point_questionaire_ans1" FromRole="questionaire_ans_point" ToRole="questionaire_ans" />
+          <NavigationProperty Name="questionaire_choice" Relationship="DB_SWQUALModel.FK_questionaire_ans_point_questionaire_choice" FromRole="questionaire_ans_point" ToRole="questionaire_choice" />
         </EntityType>
         <EntityType Name="questionaire_choice">
           <Key>
@@ -364,14 +390,14 @@
           <Property Name="id" Type="Int64" Nullable="false" />
           <Property Name="questionaire" Type="Int32" Nullable="false" />
           <Property Name="no" Type="Int32" Nullable="false" />
-          <Property Name="title" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="questionaire1" Relationship="Self.FK_questionaire_choice_questionaire" FromRole="questionaire_choice" ToRole="questionaire" />
-          <NavigationProperty Name="questionaire_ans_point" Relationship="Self.FK_questionaire_ans_point_questionaire_choice" FromRole="questionaire_choice" ToRole="questionaire_ans_point" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="questionaire1" Relationship="DB_SWQUALModel.FK_questionaire_choice_questionaire" FromRole="questionaire_choice" ToRole="questionaire" />
+          <NavigationProperty Name="questionaire_ans_point" Relationship="DB_SWQUALModel.FK_questionaire_ans_point_questionaire_choice" FromRole="questionaire_choice" ToRole="questionaire_ans_point" />
         </EntityType>
         <Association Name="FK_plan_auth_user">
-          <End Role="auth_user" Type="Self.auth_user" Multiplicity="1" />
-          <End Role="plan" Type="Self.plan" Multiplicity="*" />
+          <End Type="DB_SWQUALModel.auth_user" Role="auth_user" Multiplicity="1" />
+          <End Type="DB_SWQUALModel.plan" Role="plan" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="auth_user">
               <PropertyRef Name="id" />
@@ -381,21 +407,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_questionaire_auth_user">
-          <End Role="auth_user" Type="Self.auth_user" Multiplicity="1" />
-          <End Role="questionaire" Type="Self.questionaire" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="auth_user">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="questionaire">
-              <PropertyRef Name="owner_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_course_lut_course_faculty">
-          <End Role="lut_course_faculty" Type="Self.lut_course_faculty" Multiplicity="1" />
-          <End Role="course" Type="Self.course" Multiplicity="*" />
+          <End Type="DB_SWQUALModel.lut_course_faculty" Role="lut_course_faculty" Multiplicity="1" />
+          <End Type="DB_SWQUALModel.course" Role="course" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lut_course_faculty">
               <PropertyRef Name="id" />
@@ -406,8 +420,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_course_lut_edu_degree">
-          <End Role="lut_edu_degree" Type="Self.lut_edu_degree" Multiplicity="1" />
-          <End Role="course" Type="Self.course" Multiplicity="*" />
+          <End Type="DB_SWQUALModel.lut_edu_degree" Role="lut_edu_degree" Multiplicity="1" />
+          <End Type="DB_SWQUALModel.course" Role="course" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lut_edu_degree">
               <PropertyRef Name="id" />
@@ -418,8 +432,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_questionaire_ans_course">
-          <End Role="course" Type="Self.course" Multiplicity="1" />
-          <End Role="questionaire_ans" Type="Self.questionaire_ans" Multiplicity="*" />
+          <End Type="DB_SWQUALModel.course" Role="course" Multiplicity="1" />
+          <End Type="DB_SWQUALModel.questionaire_ans" Role="questionaire_ans" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="course">
               <PropertyRef Name="id" />
@@ -430,8 +444,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_questionaire_plan">
-          <End Role="plan" Type="Self.plan" Multiplicity="0..1" />
-          <End Role="questionaire" Type="Self.questionaire" Multiplicity="*" />
+          <End Type="DB_SWQUALModel.plan" Role="plan" Multiplicity="0..1" />
+          <End Type="DB_SWQUALModel.questionaire" Role="questionaire" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="plan">
               <PropertyRef Name="id" />
@@ -442,8 +456,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_questionaire_ans_questionaire">
-          <End Role="questionaire" Type="Self.questionaire" Multiplicity="1" />
-          <End Role="questionaire_ans" Type="Self.questionaire_ans" Multiplicity="*" />
+          <End Type="DB_SWQUALModel.questionaire" Role="questionaire" Multiplicity="1" />
+          <End Type="DB_SWQUALModel.questionaire_ans" Role="questionaire_ans" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="questionaire">
               <PropertyRef Name="id" />
@@ -454,8 +468,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_questionaire_choice_questionaire">
-          <End Role="questionaire" Type="Self.questionaire" Multiplicity="1" />
-          <End Role="questionaire_choice" Type="Self.questionaire_choice" Multiplicity="*" />
+          <End Type="DB_SWQUALModel.questionaire" Role="questionaire" Multiplicity="1" />
+          <End Type="DB_SWQUALModel.questionaire_choice" Role="questionaire_choice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="questionaire">
               <PropertyRef Name="id" />
@@ -466,8 +480,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_questionaire_ans_point_questionaire_ans1">
-          <End Role="questionaire_ans" Type="Self.questionaire_ans" Multiplicity="1" />
-          <End Role="questionaire_ans_point" Type="Self.questionaire_ans_point" Multiplicity="*" />
+          <End Type="DB_SWQUALModel.questionaire_ans" Role="questionaire_ans" Multiplicity="1" />
+          <End Type="DB_SWQUALModel.questionaire_ans_point" Role="questionaire_ans_point" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="questionaire_ans">
               <PropertyRef Name="id" />
@@ -478,8 +492,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_questionaire_ans_point_questionaire_choice">
-          <End Role="questionaire_choice" Type="Self.questionaire_choice" Multiplicity="1" />
-          <End Role="questionaire_ans_point" Type="Self.questionaire_ans_point" Multiplicity="*" />
+          <End Type="DB_SWQUALModel.questionaire_choice" Role="questionaire_choice" Multiplicity="1" />
+          <End Type="DB_SWQUALModel.questionaire_ans_point" Role="questionaire_ans_point" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="questionaire_choice">
               <PropertyRef Name="id" />
@@ -489,57 +503,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DB_SWQUALEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="auth_user" EntityType="Self.auth_user" />
-          <EntitySet Name="course" EntityType="Self.course" />
-          <EntitySet Name="lut_course_faculty" EntityType="Self.lut_course_faculty" />
-          <EntitySet Name="lut_edu_degree" EntityType="Self.lut_edu_degree" />
-          <EntitySet Name="plan" EntityType="Self.plan" />
-          <EntitySet Name="questionaire" EntityType="Self.questionaire" />
-          <EntitySet Name="questionaire_ans" EntityType="Self.questionaire_ans" />
-          <EntitySet Name="questionaire_ans_point" EntityType="Self.questionaire_ans_point" />
-          <EntitySet Name="questionaire_choice" EntityType="Self.questionaire_choice" />
-          <AssociationSet Name="FK_plan_auth_user" Association="Self.FK_plan_auth_user">
-            <End Role="auth_user" EntitySet="auth_user" />
-            <End Role="plan" EntitySet="plan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_questionaire_auth_user" Association="Self.FK_questionaire_auth_user">
-            <End Role="auth_user" EntitySet="auth_user" />
-            <End Role="questionaire" EntitySet="questionaire" />
-          </AssociationSet>
-          <AssociationSet Name="FK_course_lut_course_faculty" Association="Self.FK_course_lut_course_faculty">
-            <End Role="lut_course_faculty" EntitySet="lut_course_faculty" />
-            <End Role="course" EntitySet="course" />
-          </AssociationSet>
-          <AssociationSet Name="FK_course_lut_edu_degree" Association="Self.FK_course_lut_edu_degree">
-            <End Role="lut_edu_degree" EntitySet="lut_edu_degree" />
-            <End Role="course" EntitySet="course" />
-          </AssociationSet>
-          <AssociationSet Name="FK_questionaire_ans_course" Association="Self.FK_questionaire_ans_course">
-            <End Role="course" EntitySet="course" />
-            <End Role="questionaire_ans" EntitySet="questionaire_ans" />
-          </AssociationSet>
-          <AssociationSet Name="FK_questionaire_plan" Association="Self.FK_questionaire_plan">
-            <End Role="plan" EntitySet="plan" />
-            <End Role="questionaire" EntitySet="questionaire" />
-          </AssociationSet>
-          <AssociationSet Name="FK_questionaire_ans_questionaire" Association="Self.FK_questionaire_ans_questionaire">
-            <End Role="questionaire" EntitySet="questionaire" />
-            <End Role="questionaire_ans" EntitySet="questionaire_ans" />
-          </AssociationSet>
-          <AssociationSet Name="FK_questionaire_choice_questionaire" Association="Self.FK_questionaire_choice_questionaire">
-            <End Role="questionaire" EntitySet="questionaire" />
-            <End Role="questionaire_choice" EntitySet="questionaire_choice" />
-          </AssociationSet>
-          <AssociationSet Name="FK_questionaire_ans_point_questionaire_ans1" Association="Self.FK_questionaire_ans_point_questionaire_ans1">
-            <End Role="questionaire_ans" EntitySet="questionaire_ans" />
-            <End Role="questionaire_ans_point" EntitySet="questionaire_ans_point" />
-          </AssociationSet>
-          <AssociationSet Name="FK_questionaire_ans_point_questionaire_choice" Association="Self.FK_questionaire_ans_point_questionaire_choice">
-            <End Role="questionaire_choice" EntitySet="questionaire_choice" />
-            <End Role="questionaire_ans_point" EntitySet="questionaire_ans_point" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -549,92 +512,91 @@
           <EntitySetMapping Name="auth_user">
             <EntityTypeMapping TypeName="DB_SWQUALModel.auth_user">
               <MappingFragment StoreEntitySet="auth_user">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="surname" ColumnName="surname" />
-                <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="course">
             <EntityTypeMapping TypeName="DB_SWQUALModel.course">
               <MappingFragment StoreEntitySet="course">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="degree_id" ColumnName="degree_id" />
                 <ScalarProperty Name="faculty_id" ColumnName="faculty_id" />
+                <ScalarProperty Name="degree_id" ColumnName="degree_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="lut_course_faculty">
             <EntityTypeMapping TypeName="DB_SWQUALModel.lut_course_faculty">
               <MappingFragment StoreEntitySet="lut_course_faculty">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="prefix" ColumnName="prefix" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="lut_edu_degree">
             <EntityTypeMapping TypeName="DB_SWQUALModel.lut_edu_degree">
               <MappingFragment StoreEntitySet="lut_edu_degree">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="course_name" ColumnName="course_name" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="plan">
             <EntityTypeMapping TypeName="DB_SWQUALModel.plan">
               <MappingFragment StoreEntitySet="plan">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="problem" ColumnName="problem" />
-                <ScalarProperty Name="objective" ColumnName="objective" />
-                <ScalarProperty Name="steps" ColumnName="steps" />
                 <ScalarProperty Name="owner_id" ColumnName="owner_id" />
+                <ScalarProperty Name="steps" ColumnName="steps" />
+                <ScalarProperty Name="objective" ColumnName="objective" />
+                <ScalarProperty Name="problem" ColumnName="problem" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="questionaire">
             <EntityTypeMapping TypeName="DB_SWQUALModel.questionaire">
               <MappingFragment StoreEntitySet="questionaire">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="owner_id" ColumnName="owner_id" />
-                <ScalarProperty Name="year" ColumnName="year" />
-                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="questionaire_ans">
             <EntityTypeMapping TypeName="DB_SWQUALModel.questionaire_ans">
               <MappingFragment StoreEntitySet="questionaire_ans">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="questionaire_id" ColumnName="questionaire_id" />
-                <ScalarProperty Name="course_id" ColumnName="course_id" />
                 <ScalarProperty Name="evaluated_name" ColumnName="evaluated_name" />
+                <ScalarProperty Name="course_id" ColumnName="course_id" />
+                <ScalarProperty Name="questionaire_id" ColumnName="questionaire_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="questionaire_ans_point">
             <EntityTypeMapping TypeName="DB_SWQUALModel.questionaire_ans_point">
               <MappingFragment StoreEntitySet="questionaire_ans_point">
-                <ScalarProperty Name="answer_id" ColumnName="answer_id" />
-                <ScalarProperty Name="choice_id" ColumnName="choice_id" />
                 <ScalarProperty Name="answer_point" ColumnName="answer_point" />
+                <ScalarProperty Name="choice_id" ColumnName="choice_id" />
+                <ScalarProperty Name="answer_id" ColumnName="answer_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="questionaire_choice">
             <EntityTypeMapping TypeName="DB_SWQUALModel.questionaire_choice">
               <MappingFragment StoreEntitySet="questionaire_choice">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="questionaire" ColumnName="questionaire" />
-                <ScalarProperty Name="no" ColumnName="no" />
-                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="no" ColumnName="no" />
+                <ScalarProperty Name="questionaire" ColumnName="questionaire" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
