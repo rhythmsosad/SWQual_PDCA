@@ -826,9 +826,15 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PlanController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuestionaireController.cs" />
+    <Compile Include="Areas\Admin\Models\PlanModel.cs" />
+    <Compile Include="Areas\Admin\Models\PlanModelItem.cs" />
+    <Compile Include="Areas\Admin\Models\PlanSearch.cs" />
     <Compile Include="Areas\Admin\Models\QuestionaireChoiceModelItem.cs" />
     <Compile Include="Areas\Admin\Models\QuestionaireModelItem.cs" />
+    <Compile Include="Areas\Admin\Models\__SampleModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Core\CoreFunction.cs" />
+    <Compile Include="Core\SessionUtil.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -875,6 +881,9 @@
     <Compile Include="Models\Entities\questionaire_choice.cs">
       <DependentUpon>PDCAModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelResult.cs" />
+    <Compile Include="Models\_DatatableRequestModel.cs" />
+    <Compile Include="Models\_DatatableResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

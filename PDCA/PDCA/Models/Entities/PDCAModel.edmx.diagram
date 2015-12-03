@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5dd2dd24a542420fa4fa6f4e0f9db088" Name="Diagram1">
-        <EntityTypeShape EntityType="DB_SWQUALModel.auth_user" Width="1.5" PointX="0.75" PointY="2.625" />
-        <EntityTypeShape EntityType="DB_SWQUALModel.course" Width="1.5" PointX="3" PointY="9.5" />
-        <EntityTypeShape EntityType="DB_SWQUALModel.lut_course_faculty" Width="1.5" PointX="0.75" PointY="8.5" />
-        <EntityTypeShape EntityType="DB_SWQUALModel.lut_edu_degree" Width="1.5" PointX="0.75" PointY="11" />
-        <EntityTypeShape EntityType="DB_SWQUALModel.plan" Width="1.5" PointX="3" PointY="4.375" />
-        <EntityTypeShape EntityType="DB_SWQUALModel.questionaire" Width="1.5" PointX="3" PointY="1.25" />
-        <EntityTypeShape EntityType="DB_SWQUALModel.questionaire_ans" Width="1.5" PointX="5.25" PointY="1.25" />
-        <EntityTypeShape EntityType="DB_SWQUALModel.questionaire_ans_point" Width="1.5" PointX="7.5" PointY="3.375" />
-        <EntityTypeShape EntityType="DB_SWQUALModel.questionaire_choice" Width="1.5" PointX="5.25" PointY="4.625" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.auth_user" Width="1.5" PointX="0.75" PointY="3" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.course" Width="1.5" PointX="3" PointY="9.625" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.lut_course_faculty" Width="1.5" PointX="0.75" PointY="8.625" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.lut_edu_degree" Width="1.5" PointX="0.75" PointY="11.125" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.plan" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.questionaire" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.questionaire_ans" Width="1.5" PointX="5.25" PointY="1.375" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.questionaire_ans_point" Width="1.5" PointX="7.5" PointY="3.5" />
+        <EntityTypeShape EntityType="DB_SWQUALModel.questionaire_choice" Width="1.5" PointX="5.25" PointY="5" />
         <AssociationConnector Association="DB_SWQUALModel.FK_plan_auth_user" />
         <AssociationConnector Association="DB_SWQUALModel.FK_questionaire_auth_user" />
         <AssociationConnector Association="DB_SWQUALModel.FK_course_lut_course_faculty" />

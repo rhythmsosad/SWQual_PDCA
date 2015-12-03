@@ -52,6 +52,8 @@
           <Property Name="objective" Type="nvarchar(max)" Nullable="false" />
           <Property Name="steps" Type="nvarchar(max)" Nullable="false" />
           <Property Name="owner_id" Type="int" Nullable="false" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="update_date" Type="datetime" />
         </EntityType>
         <EntityType Name="questionaire">
           <Key>
@@ -61,6 +63,8 @@
           <Property Name="year" Type="int" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="2000" Nullable="false" />
           <Property Name="owner_id" Type="int" Nullable="false" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="update_date" Type="datetime" />
         </EntityType>
         <EntityType Name="questionaire_ans">
           <Key>
@@ -371,6 +375,8 @@
           <Property Name="objective" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="steps" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="owner_id" Type="Int32" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="update_date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="auth_user" Relationship="DB_SWQUALModel.FK_plan_auth_user" FromRole="plan" ToRole="auth_user" />
           <NavigationProperty Name="questionaire_choice" Relationship="DB_SWQUALModel.FK_questionaire_choice_plan" FromRole="plan" ToRole="questionaire_choice" />
         </EntityType>
@@ -382,6 +388,8 @@
           <Property Name="year" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
           <Property Name="owner_id" Type="Int32" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="update_date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="auth_user" Relationship="DB_SWQUALModel.FK_questionaire_auth_user" FromRole="questionaire" ToRole="auth_user" />
           <NavigationProperty Name="questionaire_ans" Relationship="DB_SWQUALModel.FK_questionaire_ans_questionaire" FromRole="questionaire" ToRole="questionaire_ans" />
           <NavigationProperty Name="questionaire_choice" Relationship="DB_SWQUALModel.FK_questionaire_choice_questionaire" FromRole="questionaire" ToRole="questionaire_choice" />
@@ -593,6 +601,8 @@
           <EntitySetMapping Name="plan">
             <EntityTypeMapping TypeName="DB_SWQUALModel.plan">
               <MappingFragment StoreEntitySet="plan">
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
                 <ScalarProperty Name="owner_id" ColumnName="owner_id" />
                 <ScalarProperty Name="steps" ColumnName="steps" />
                 <ScalarProperty Name="objective" ColumnName="objective" />
@@ -605,6 +615,8 @@
           <EntitySetMapping Name="questionaire">
             <EntityTypeMapping TypeName="DB_SWQUALModel.questionaire">
               <MappingFragment StoreEntitySet="questionaire">
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
                 <ScalarProperty Name="owner_id" ColumnName="owner_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="year" ColumnName="year" />
