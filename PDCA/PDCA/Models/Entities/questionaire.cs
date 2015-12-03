@@ -24,9 +24,9 @@ namespace PDCA.Models.Entities
         public int id { get; set; }
         public int year { get; set; }
         public string name { get; set; }
-        public Nullable<int> plan_id { get; set; }
+        public int owner_id { get; set; }
     
-        public virtual plan plan { get; set; }
+        public virtual auth_user auth_user { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<questionaire_ans> questionaire_ans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -17,7 +17,7 @@ namespace PDCA.Models.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public plan()
         {
-            this.questionaire = new HashSet<questionaire>();
+            this.questionaire_choice = new HashSet<questionaire_choice>();
         }
     
         public int id { get; set; }
@@ -29,6 +29,6 @@ namespace PDCA.Models.Entities
     
         public virtual auth_user auth_user { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<questionaire> questionaire { get; set; }
+        public virtual ICollection<questionaire_choice> questionaire_choice { get; set; }
     }
 }

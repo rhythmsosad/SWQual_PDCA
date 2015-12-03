@@ -18,6 +18,7 @@ namespace PDCA.Models.Entities
         public auth_user()
         {
             this.plan = new HashSet<plan>();
+            this.questionaire = new HashSet<questionaire>();
         }
     
         public int id { get; set; }
@@ -25,8 +26,12 @@ namespace PDCA.Models.Entities
         public string surname { get; set; }
         public string username { get; set; }
         public string password { get; set; }
+        public string position { get; set; }
+        public string faculty { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<plan> plan { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<questionaire> questionaire { get; set; }
     }
 }

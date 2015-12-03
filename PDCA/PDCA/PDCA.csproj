@@ -826,6 +826,8 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PlanController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuestionaireController.cs" />
+    <Compile Include="Areas\Admin\Models\QuestionaireChoiceModelItem.cs" />
+    <Compile Include="Areas\Admin\Models\QuestionaireModelItem.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -946,7 +948,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

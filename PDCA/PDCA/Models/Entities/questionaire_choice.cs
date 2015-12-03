@@ -21,12 +21,14 @@ namespace PDCA.Models.Entities
         }
     
         public long id { get; set; }
-        public int questionaire { get; set; }
+        public int questionaire_id { get; set; }
         public int no { get; set; }
         public string title { get; set; }
         public string description { get; set; }
+        public int plan_id { get; set; }
     
-        public virtual questionaire questionaire1 { get; set; }
+        public virtual plan plan { get; set; }
+        public virtual questionaire questionaire { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<questionaire_ans_point> questionaire_ans_point { get; set; }
     }
